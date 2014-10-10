@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:seekbardialogpreference="seekbardialogpreference">
+    <CheckBoxPreference
+        android:key="isAlarmEnabled"
+        android:defaultValue="false"
+        android:title="Is Alarm Enabled">
+    </CheckBoxPreference>
+    <CheckBoxPreference
+        android:key="isIconHidden"
+        android:defaultValue="false"
+        android:title="Hide icon from menu"
+        android:enabled="false">
+    </CheckBoxPreference>
+    <Preference
+        android:key="select_audio"
+        android:defaultValue="android.resource://com.example.olologin.qudah/raw/qudah_sound"
+        android:title="Select audio file">
+    </Preference>
+    <com.example.olologin.qudah.VolumePickDialogPreference
+        android:key="sound_volume"
+        android:defaultValue="100"
+        android:title="Select volume"
+        seekbardialogpreference:max="100"
+        seekbardialogpreference:min="0"
+        seekbardialogpreference:interval="1"
+        seekbardialogpreference:leftUnits=""
+        seekbardialogpreference:rightUnits="%">
+    </com.example.olologin.qudah.VolumePickDialogPreference>
+    <com.example.olologin.qudah.TimePickDialogPreference
+        android:key="time"
+        android:defaultValue="20141008T161300Z"
+        android:title="Set alarm time">
+    </com.example.olologin.qudah.TimePickDialogPreference>
+
+    <com.example.olologin.qudah.SeekBarDialogPreference
+        android:key="time_variation"
+        android:defaultValue="100"
+        android:title="Select variation in minutes"
+        seekbardialogpreference:max="120"
+        seekbardialogpreference:min="1"
+        seekbardialogpreference:interval="1"
+        seekbardialogpreference:leftUnits=""
+        seekbardialogpreference:rightUnits=" minutes">
+    </com.example.olologin.qudah.SeekBarDialogPreference>
+
+</PreferenceScreen>
