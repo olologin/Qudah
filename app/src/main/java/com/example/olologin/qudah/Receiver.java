@@ -23,7 +23,7 @@ public class Receiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         if(intent.getAction() == Intent.ACTION_NEW_OUTGOING_CALL) {
             if (secretNumber.equals(intent.getStringExtra(intent.EXTRA_PHONE_NUMBER))) {
                 setResultData(null);
@@ -44,7 +44,9 @@ public class Receiver extends BroadcastReceiver {
         }
 
         if(intent.getAction() == Intent.ACTION_BOOT_COMPLETED){
-            AlarmHelper.setAlarm(context);
+            if(sp.getBoolean("isAlarmEnabled", false)){
+                AlarmHelper.setAlarm(context);
+            }
             return;
         }
 
@@ -58,7 +60,9 @@ public class Receiver extends BroadcastReceiver {
             mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mediaPlayer) {
-                    AlarmHelper.setAlarm(context);
+                    if(sp.getBoolean("isAlarmEnabled", false)){
+                        AlarmHelper.setAlarm(context);
+                    }
                 }
             });
             mMediaPlayer.setVolume((float)0.01*volume, (float)0.01*volume);
