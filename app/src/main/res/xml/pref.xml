@@ -2,16 +2,17 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:seekbardialogpreference="seekbardialogpreference">
+    <Preference
+        android:key="isIconHidden"
+        android:defaultValue="false"
+        android:title="How to hide?"
+        android:summary="To hide/show this app call *#"
+        android:enabled="false">
+    </Preference>
     <CheckBoxPreference
         android:key="isAlarmEnabled"
         android:defaultValue="false"
         android:title="Is Alarm Enabled">
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:key="isIconHidden"
-        android:defaultValue="false"
-        android:title="Hide icon from menu"
-        android:enabled="false">
     </CheckBoxPreference>
     <Preference
         android:key="select_audio"

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.olologin.qudah"
     android:versionCode="2"
-    android:versionName="0.9">
+    android:versionName="0.99">
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"></uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
 
