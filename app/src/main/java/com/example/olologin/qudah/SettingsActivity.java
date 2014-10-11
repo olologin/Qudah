@@ -1,16 +1,11 @@
 package com.example.olologin.qudah;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
@@ -19,8 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.Toast;
 
 public class SettingsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String LOG_TAG = "SettingsActivity";
@@ -75,32 +68,27 @@ public class SettingsActivity extends PreferenceActivity implements SharedPrefer
     public void onSharedPreferenceChanged(SharedPreferences sp,
                                           String key) {
         if (key.equals("time")){
-            AlarmHelper.cancelAlarm(getApplicationContext());
-            AlarmHelper.setAlarm(getApplicationContext());
+            if(sp.getBoolean("isAlarmEnabled", false)){
+                AlarmHelper.cancelAlarm(getApplicationContext());
+                AlarmHelper.setAlarm(getApplicationContext());
+            }
         } else if (key.equals("isAlarmEnabled")) {
             if(sp.getBoolean(key, false)){
-
                 AlarmHelper.setAlarm(getApplicationContext());
             }
             else {
                 AlarmHelper.cancelAlarm(getApplicationContext());
             }
         } else if (key.equals("isIconHidden")) {}
-        else {
-            updateSummary(sp, key);
-        }
+
+        updateSummary(sp, key);
     }
 
     private void updateSummary(SharedPreferences sp, String key) {
         Preference p;
         if(key.equals("alarm_time")){
             p = findPreference("isAlarmEnabled");
-            if(sp.getBoolean("isAlarmEnabled", false)){
-                p.setSummary(sp.getString("alarm_time", "Ooops, something went wrong"));
-            }
-            else {
-                p.setSummary("Alarm disabled");
-            }
+            p.setSummary(sp.getString("alarm_time", ""));
         } else if (key.equals("sound_volume") || key.equals("time_variation")){
             p = findPreference(key);
             p.setSummary(String.valueOf(sp.getInt(key, 100)));

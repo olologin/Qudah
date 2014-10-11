@@ -10,9 +10,6 @@ import android.text.format.Time;
 
 import java.util.Random;
 
-/**
- * Created by user on 10/10/14.
- */
 public class AlarmHelper {
     public static Time setAlarm(Context context) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
@@ -23,7 +20,7 @@ public class AlarmHelper {
         Intent i = new Intent(context, Receiver.class);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
         Random r = new Random();
-        int randomMinute = r.nextInt(sp.getInt("time_variation", 0));
+        int randomMinute = r.nextInt(sp.getInt("time_variation", 0)+1);
         Time alarmTime = getNextAlarmTime(context, time, randomMinute);
         am.set(AlarmManager.RTC_WAKEUP, alarmTime.toMillis(false), pi);
 
@@ -55,6 +52,6 @@ public class AlarmHelper {
         alarmManager.cancel(pi);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putString("alarm_time", "").commit();
+        sp.edit().putString("alarm_time", "Alarm disabled").commit();
     }
 }

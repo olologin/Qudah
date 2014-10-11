@@ -39,7 +39,7 @@
         android:defaultValue="100"
         android:title="Select variation in minutes"
         seekbardialogpreference:max="120"
-        seekbardialogpreference:min="1"
+        seekbardialogpreference:min="0"
         seekbardialogpreference:interval="1"
         seekbardialogpreference:leftUnits=""
         seekbardialogpreference:rightUnits=" minutes">
