@@ -7,7 +7,7 @@ Also it's posible to hide it from menus (Just call *# in standart dialer to do t
 - PROCESS_OUTGOING_CALLS - used only to intercept and dismiss call to *#
 - RECEIVE_BOOT_COMPLETED - used to set alarm after system boot
 
-For developers: Maybe it may be useful by beginners in android programming like me.
+For developers: It may be useful for beginners in android programming like me.
 In this project you can see examples of intercepting call to specified phone number, 
 example of hiding app from menu with android's standart PackageManager and example
 of using AlarmManager.
